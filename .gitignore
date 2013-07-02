@@ -9,3 +9,5 @@
 *.swp
 *.sym
 .dep
+xboot/Debug
+xboot/Release
