@@ -5,7 +5,7 @@
     <ProjectVersion>6.1</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
     <ProjectGuid>{eeb5a5ad-8067-4a27-8f86-4bf019f63650}</ProjectGuid>
-    <avrdevice>ATxmega192A3</avrdevice>
+    <avrdevice>ATxmega256A3U</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
     <Language>C</Language>
@@ -18,11 +18,11 @@
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <eraseonlaunchrule>0</eraseonlaunchrule>
     <AsfVersion>3.1.3</AsfVersion>
-    <avrtoolinterface />
-    <avrtool>com.atmel.avrdbg.tool.simulator</avrtool>
+    <avrtoolinterface>PDI</avrtoolinterface>
+    <avrtool>com.atmel.avrdbg.tool.jtagicemk3</avrtool>
     <com_atmel_avrdbg_tool_simulator>
       <ToolType xmlns="">com.atmel.avrdbg.tool.simulator</ToolType>
       <ToolName xmlns="">AVR Simulator</ToolName>
@@ -40,77 +40,114 @@
     </com_atmel_avrdbg_tool_simulator>
     <AsfFrameworkConfig>
       <framework-data>
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.3.0" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.3.0" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <UncachedRange />
+    <BootSegment>2</BootSegment>
+    <com_atmel_avrdbg_tool_jtagicemk3>
+      <ToolType xmlns="">com.atmel.avrdbg.tool.jtagicemk3</ToolType>
+      <ToolName xmlns="">JTAGICE3</ToolName>
+      <ToolNumber xmlns="">J30200024812</ToolNumber>
+      <StimuliFile xmlns="">
+      </StimuliFile>
+      <Channel xmlns="">
+        <host>127.0.0.1</host>
+        <port>55795</port>
+        <ssl>False</ssl>
+      </Channel>
+      <ToolOptions xmlns="">
+        <InterfaceName>PDI</InterfaceName>
+        <InterfaceProperties>
+          <JtagDbgClock>7500000</JtagDbgClock>
+          <SwdClock>249000</SwdClock>
+          <JtagProgClock>7500000</JtagProgClock>
+          <IspClock>125000</IspClock>
+          <JtagInChain>false</JtagInChain>
+          <JtagEnableExtResetOnStartSession>false</JtagEnableExtResetOnStartSession>
+          <JtagDevicesBefore>0</JtagDevicesBefore>
+          <JtagDevicesAfter>0</JtagDevicesAfter>
+          <JtagInstrBitsBefore>0</JtagInstrBitsBefore>
+          <JtagInstrBitsAfter>0</JtagInstrBitsAfter>
+          <PdiClock>4000000</PdiClock>
+          <AWireMaxBaud>7500000</AWireMaxBaud>
+        </InterfaceProperties>
+      </ToolOptions>
+    </com_atmel_avrdbg_tool_jtagicemk3>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <UsesExternalMakeFile>False</UsesExternalMakeFile>
     <ExternalMakeFilePath>\\vmware-host\Shared Folders\Alden\Projects\proj38_TinyG\TinyG\xboot\xboot\Makefile</ExternalMakeFilePath>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>"$(ToolchainDir)\avr-objcopy.exe" -O ihex --change-addresses -0x30000 "$(OutputDirectory)\xboot.hex" "$(OutputDirectory)\xboot-boot.hex"
+    <PostBuildEvent>"$(ToolchainDir)\avr-objcopy.exe" -O ihex --change-addresses -0x40000 "$(OutputDirectory)\xboot.hex" "$(OutputDirectory)\xboot-boot.hex"
 "$(ToolchainDir)\avr-nm.exe" -n "$(OutputDirectory)\xboot.elf" &gt; "$(OutputDirectory)\xboot.sym"</PostBuildEvent>
     <ToolchainSettings>
-      <AvrGcc xmlns="">
-  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
-  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
-  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
-  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
-  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
-  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
-  <avrgcc.compiler.symbols.DefSymbols>
-    <ListValues>
-      <Value>F_CPU=32000000</Value>
-      <Value>USE_CONFIG_H</Value>
-    </ListValues>
-  </avrgcc.compiler.symbols.DefSymbols>
-  <avrgcc.compiler.directories.IncludePaths>
-    <ListValues>
-      <Value>-include config.mk</Value>
-    </ListValues>
-  </avrgcc.compiler.directories.IncludePaths>
-  <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
-  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
-  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
-  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
-  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
-  <avrgcc.compiler.miscellaneous.OtherFlags>-mmcu=atxmega192a3 -I. -gdwarf-2 -std=gnu99 -ffunction-sections -fdata-sections -fno-jump-tables -Wa,-adhlns=flash.lst -Wstrict-prototypes</avrgcc.compiler.miscellaneous.OtherFlags>
-  <avrgcc.linker.libraries.Libraries>
-    <ListValues>
-      <Value>libm</Value>
-    </ListValues>
-  </avrgcc.linker.libraries.Libraries>
-  <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
-</AvrGcc>
+      <AvrGcc>
+        <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>F_CPU=32000000</Value>
+            <Value>USE_CONFIG_H</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>-include config.mk</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.compiler.miscellaneous.OtherFlags>-mmcu=atxmega192a3 -I. -gdwarf-2 -std=gnu99 -ffunction-sections -fdata-sections -fno-jump-tables -Wa,-adhlns=flash.lst -Wstrict-prototypes</avrgcc.compiler.miscellaneous.OtherFlags>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.linker.miscellaneous.LinkerFlags>-Wl,--section-start=.text=0x040000</avrgcc.linker.miscellaneous.LinkerFlags>
+        <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+      </AvrGcc>
     </ToolchainSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
-      <AvrGcc xmlns="">
-  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
-  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
-  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
-  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
-  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
-  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
-  <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
-  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
-  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
-  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
-  <avrgcc.linker.libraries.Libraries>
-    <ListValues>
-      <Value>libm</Value>
-    </ListValues>
-  </avrgcc.linker.libraries.Libraries>
-</AvrGcc>
+      <AvrGcc>
+        <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+      </AvrGcc>
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
@@ -120,15 +157,18 @@
     <Compile Include="api.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="config.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="eeprom_driver.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="eeprom_driver.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="fifo.c">
+    <None Include="fifo.c">
       <SubType>compile</SubType>
-    </Compile>
+    </None>
     <Compile Include="fifo.h">
       <SubType>compile</SubType>
     </Compile>
@@ -138,9 +178,9 @@
     <Compile Include="flash.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="i2c.c">
+    <None Include="i2c.c">
       <SubType>compile</SubType>
-    </Compile>
+    </None>
     <Compile Include="i2c.h">
       <SubType>compile</SubType>
     </Compile>

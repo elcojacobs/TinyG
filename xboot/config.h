@@ -1,10 +1,34 @@
 // XBoot config header file
-// MCU: atxmega192a3
+// MCU: atxmega256a3u
 // F_CPU: 32000000
 
+#define USE_LED
+#define LED_INV 0
+#define LED_PIN 1
+#define LED_PORT_NAME F
+
+
+#define USE_ENTER_DELAY
+#define ENTER_BLINK_COUNT 3
+#define ENTER_BLINK_WAIT 300000
+
+#define USE_UART
+#define USE_ENTER_UART
+//#define ENTER_UART_NEED_SYNC
+#define UART_BAUD_RATE 115200
+#define UART_PORT_NAME C
+#define UART_NUMBER 0
+//#define UART_EN_PIN_INV 0
+//#define UART_EN_PORT_NAME C
+//#define UART_EN_PIN 4
+//#define UART_RX_PUEN
+
+
+/*
 #define ATTACH_LED_INV 1
 #define ATTACH_LED_PIN 1
 #define ATTACH_LED_PORT_NAME A
+*/
 #define ENABLE_API
 #define ENABLE_API_FIRMWARE_UPDATE
 #define ENABLE_API_LOW_LEVEL_FLASH
@@ -16,13 +40,8 @@
 #define ENABLE_FLASH_ERASE_WRITE
 #define ENABLE_FUSE_BITS
 #define ENABLE_LOCK_BITS
-#define ENTER_BLINK_COUNT 3
-#define ENTER_BLINK_WAIT 30000
-#define ENTER_PIN 0
-#define ENTER_PIN_PUEN 1
-#define ENTER_PIN_STATE 0
-#define ENTER_PORT_NAME C
-#define ENTER_UART_NEED_SYNC
+
+/*
 #define FIFO_BIT_REVERSE
 #define FIFO_CTL_PORT_NAME D
 #define FIFO_DATA_PORT_NAME C
@@ -38,19 +57,8 @@
 #define I2C_DEVICE_PORT C
 #define I2C_GC_ENABLE 1
 #define I2C_MATCH_ANY 1
-#define LED_INV 0
-#define LED_PIN 5
-#define LED_PORT_NAME A
-#define UART_BAUD_RATE 115200
-#define UART_EN_PIN 4
-#define UART_EN_PIN_INV 0
-#define UART_EN_PORT_NAME C
-#define UART_NUMBER 0
-#define UART_PORT_NAME C
-#define UART_RX_PUEN
+*/
+
 #define USE_API_VERSION 1
-#define USE_ENTER_DELAY
-#define USE_ENTER_UART
-#define USE_LED
-#define USE_UART
+
 #define WATCHDOG_TIMEOUT WDT_PER_1KCLK_gc
