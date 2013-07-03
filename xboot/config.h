@@ -14,7 +14,7 @@
 
 #define USE_UART
 #define USE_ENTER_UART
-//#define ENTER_UART_NEED_SYNC
+#define ENTER_UART_NEED_SYNC
 #define UART_BAUD_RATE 115200
 #define UART_PORT_NAME C
 #define UART_NUMBER 0
