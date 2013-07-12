@@ -23,6 +23,7 @@
 //#define UART_EN_PIN 4
 //#define UART_RX_PUEN
 
+#define USE_DFLL
 
 /*
 #define ATTACH_LED_INV 1
