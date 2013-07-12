@@ -9,7 +9,7 @@
 
 
 #define USE_ENTER_DELAY
-#define ENTER_BLINK_COUNT 3
+#define ENTER_BLINK_COUNT 5
 #define ENTER_BLINK_WAIT 300000
 
 #define USE_UART
